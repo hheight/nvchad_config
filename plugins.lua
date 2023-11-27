@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -25,7 +25,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -41,7 +41,7 @@ local plugins = {
   {
     "nvim-tree/nvim-web-devicons",
     opts = overrides.nvim_web_devicons.opts,
-    config = overrides.nvim_web_devicons.config
+    config = overrides.nvim_web_devicons.config,
   },
 
   -- Install a plugin
@@ -67,7 +67,12 @@ local plugins = {
   },
 
   {
-    "christoomey/vim-tmux-navigator",
+    "alexghergh/nvim-tmux-navigation",
+    config = function()
+      require("nvim-tmux-navigation").setup {
+        disable_when_zoomed = true, -- defaults to false
+      }
+    end,
     lazy = false,
   },
 
@@ -76,10 +81,10 @@ local plugins = {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
   },
 
   -- To make a plugin not be loaded
