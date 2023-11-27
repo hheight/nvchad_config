@@ -57,4 +57,11 @@ M.nvimtree = {
   },
 }
 
+-- reset devicons
+M.nvim_web_devicons = {
+  opts = {},
+  config = function ()
+  end
+}
+
 return M

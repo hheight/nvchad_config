@@ -38,6 +38,12 @@ local plugins = {
     opts = overrides.nvimtree,
   },
 
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = overrides.nvim_web_devicons.opts,
+    config = overrides.nvim_web_devicons.config
+  },
+
   -- Install a plugin
   {
     "max397574/better-escape.nvim",
