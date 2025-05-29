@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "ts_ls", "clangd", "solargraph", "yamlls" }
+local servers = { "cssls", "ts_ls", "clangd", "yamlls", "jsonls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -22,3 +22,23 @@ end
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
+--
+lspconfig.html.setup {
+  filetypes = { "html", "eruby" },
+}
+
+lspconfig.tailwindcss.setup {
+  filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "eruby" },
+  init_options = {
+    userLanguages = {
+      eruby = "html",
+    },
+  },
+}
+
+lspconfig.ruby_lsp.setup {
+  init_options = {
+    formatter = "standard",
+    linters = { "standard" },
+  },
+}

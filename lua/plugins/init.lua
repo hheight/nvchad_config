@@ -1,7 +1,16 @@
 return {
+  { import = "nvchad.blink.lazyspec" },
+  {
+    "Saghen/blink.cmp",
+    opts = {
+      completion = {
+        ghost_text = { enabled = false },
+      },
+    },
+  },
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
@@ -19,30 +28,6 @@ return {
       require "configs.lspconfig"
     end,
   },
-
-  {
-    "hrsh7th/nvim-cmp",
-    opts = {
-      sources = {
-        { name = "copilot" },
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "nvim_lua" },
-        { name = "path" },
-      },
-      mapping = {
-        ["<Tab>"] = function(callback)
-          callback()
-        end,
-
-        ["<S-Tab>"] = function(callback)
-          callback()
-        end,
-      },
-    },
-  },
-
   {
     "vim-test/vim-test",
     lazy = false,
@@ -92,33 +77,11 @@ return {
     },
   },
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
+    "echasnovski/mini.ai",
+    version = false,
     config = function()
-      require("copilot").setup {
-        panel = {
-          enabled = true,
-          auto_refresh = false,
-          keymap = {
-            jump_prev = "[[",
-            jump_next = "]]",
-            accept = "<CR>",
-            refresh = "gr",
-            open = "<M-CR>",
-          },
-          layout = {
-            position = "right", -- | top | left | right
-          },
-        },
-        suggestion = {
-          enabled = true,
-          auto_trigger = false,
-          keymap = {
-            accept = "<tab>",
-          },
-        },
-      }
+      require("mini.ai").setup {}
     end,
+    lazy = false,
   },
 }
